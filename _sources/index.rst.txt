@@ -11,15 +11,6 @@ Welcome to Serendipyty: A Python toolbox for teaching Geophysics's documentation
    :caption: Contents:
 
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
-
 PROVA PROVA PROVA
 ==================
 
@@ -42,7 +33,7 @@ Make your research more **reproducible** by writing a Python script or
 
     <h3 class="text-center">Development</h3>
 
-Don't start from scratch! Build upon the existing tools in Fatiando to develop
+Don't start from scratch! Build upon the existing tools in Serendipyty to develop
 new methods.
 
 .. raw:: html
@@ -53,7 +44,7 @@ new methods.
 
     <h3 class="text-center">Teaching</h3>
 
-Combine Fatiando with the `Jupyter notebook`_ to make rich, interactive
+Combine Serendipyty with the `Jupyter notebook`_ to make rich, interactive
 documents. Great for teaching fundamental concepts of geophysics!
 
 .. raw:: html
@@ -62,5 +53,12 @@ documents. Great for teaching fundamental concepts of geophysics!
 
 .. raw:: html
 
-</div> <!-- Row -->
+	</div> <!-- Row -->
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
 
