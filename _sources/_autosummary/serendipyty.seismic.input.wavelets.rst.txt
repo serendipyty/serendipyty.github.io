@@ -1,0 +1,23 @@
+serendipyty\.seismic\.input\.wavelets
+=====================================
+
+.. automodule:: serendipyty.seismic.input.wavelets
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      RickerWavelet
+      WaveletBase
+   
+   
+
+   
+   
+   

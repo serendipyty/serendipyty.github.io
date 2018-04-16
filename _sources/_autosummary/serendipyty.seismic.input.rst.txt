@@ -1,0 +1,16 @@
+serendipyty\.seismic\.input
+===========================
+
+.. automodule:: serendipyty.seismic.input
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
