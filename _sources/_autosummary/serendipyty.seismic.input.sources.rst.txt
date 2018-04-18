@@ -1,0 +1,23 @@
+serendipyty\.seismic\.input\.sources
+====================================
+
+.. automodule:: serendipyty.seismic.input.sources
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      PointSource
+      SourceBase
+   
+   
+
+   
+   
+   

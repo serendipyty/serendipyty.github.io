@@ -1,0 +1,16 @@
+serendipyty\.seismic\.modelling
+===============================
+
+.. automodule:: serendipyty.seismic.modelling
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   

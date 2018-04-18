@@ -1,0 +1,23 @@
+serendipyty\.seismic\.modelling\.awe2d
+======================================
+
+.. automodule:: serendipyty.seismic.modelling.awe2d
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      calc_full
+      calc_full_old
+   
+   
+
+   
+   
+   
+
+   
+   
+   

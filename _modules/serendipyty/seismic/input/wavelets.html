@@ -60,7 +60,10 @@
      href="../../../../index.html">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"></ul>
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Developer guide</a></li>
+</ul>
+</ul>
 </li>
               
                 <li class="dropdown">
@@ -140,7 +143,7 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="WaveletBase.__call__"><a class="viewcode-back" href="../../../../_autosummary/serendipyty.seismic.input.wavelets.html#serendipyty.seismic.input.wavelets.WaveletBase.__call__">[docs]</a>    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Callable object method for the seismic sources.</span>
 
 <span class="sd">        Parameters</span>
@@ -153,7 +156,7 @@
         <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_evaluate_time</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Either a time or frequency must be provided.&#39;</span><span class="p">)</span></div>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Either a time or frequency must be provided.&#39;</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="RickerWavelet"><a class="viewcode-back" href="../../../../_autosummary/serendipyty.seismic.input.wavelets.html#serendipyty.seismic.input.wavelets.RickerWavelet">[docs]</a><span class="k">class</span> <span class="nc">RickerWavelet</span><span class="p">(</span><span class="n">WaveletBase</span><span class="p">):</span>
@@ -161,13 +164,15 @@
 
 <span class="sd">    The Ricker wavelet is the negative 2nd derivative of a Gaussian [1]_.</span>
 
-<span class="sd">    :param fc: central frequency</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    fc: float</span>
+<span class="sd">        central frequency</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-
-<span class="sd">    [1] N.  Ricker, &quot;The form and laws of propagation of seismic wavelets,&quot;</span>
-<span class="sd">    Geophysics, vol. 18, pp. 10-40, 1953.</span>
+<span class="sd">    .. [1] N. Ricker, &quot;The form and laws of propagation of seismic wavelets,&quot;</span>
+<span class="sd">       Geophysics, vol. 18, pp. 10-40, 1953.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
