@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>serendipyty.seismic.modelling.awe2d &#8212; Serendipyty: A Python toolbox for teaching Geophysics 0.1 documentation</title>
+    <title>serendipyty.seismic.modelling.bcs &#8212; Serendipyty: A Python toolbox for teaching Geophysics 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -75,7 +75,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">serendipyty.seismic.modelling.awe2d</a></li>
+<li><a class="reference internal" href="#">serendipyty.seismic.modelling.bcs</a></li>
 </ul>
 </ul>
 </li>
@@ -91,7 +91,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="../_sources/_autosummary/serendipyty.seismic.modelling.awe2d.rst.txt"
+  <a href="../_sources/_autosummary/serendipyty.seismic.modelling.bcs.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -115,25 +115,82 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="module-serendipyty.seismic.modelling.awe2d">
-<span id="serendipyty-seismic-modelling-awe2d"></span><h1>serendipyty.seismic.modelling.awe2d<a class="headerlink" href="#module-serendipyty.seismic.modelling.awe2d" title="Permalink to this headline">¶</a></h1>
-<p>Created on Fri Sep 30 13:58:34 2016</p>
+  <div class="section" id="module-serendipyty.seismic.modelling.bcs">
+<span id="serendipyty-seismic-modelling-bcs"></span><h1>serendipyty.seismic.modelling.bcs<a class="headerlink" href="#module-serendipyty.seismic.modelling.bcs" title="Permalink to this headline">¶</a></h1>
+<p>Created on Wed Feb  7 15:10:52 2018</p>
 <p>&#64;author: Filippo Broggini (ETH Zürich) - <a class="reference external" href="mailto:filippo&#46;broggini&#37;&#52;&#48;erdw&#46;ethz&#46;ch">filippo<span>&#46;</span>broggini<span>&#64;</span>erdw<span>&#46;</span>ethz<span>&#46;</span>ch</a></p>
-<p class="rubric">Functions</p>
+<p class="rubric">Classes</p>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">calc_full</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#serendipyty.seismic.modelling.bcs.BaseBc" title="serendipyty.seismic.modelling.bcs.BaseBc"><code class="xref py py-obj docutils literal"><span class="pre">BaseBc</span></code></a>([omp_num_threads])</td>
+<td>Base class for boundary conditions.</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">calc_full_old</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#serendipyty.seismic.modelling.bcs.PmlBc" title="serendipyty.seismic.modelling.bcs.PmlBc"><code class="xref py py-obj docutils literal"><span class="pre">PmlBc</span></code></a>([npml,&nbsp;freesurface])</td>
+<td>PMLs boundary conditions.</td>
 </tr>
 </tbody>
 </table>
+<dl class="class">
+<dt id="serendipyty.seismic.modelling.bcs.BaseBc">
+<em class="property">class </em><code class="descclassname">serendipyty.seismic.modelling.bcs.</code><code class="descname">BaseBc</code><span class="sig-paren">(</span><em>omp_num_threads=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/modelling/bcs.html#BaseBc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.modelling.bcs.BaseBc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Base class for boundary conditions.</p>
+<p>This class defines the basic parameters for the boundary conditions
+used in the modelling routines.</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>omp_num_threads</strong></td>
+<td>(int, optional) Number of computational threads</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="serendipyty.seismic.modelling.bcs.BaseBc.__weakref__">
+<code class="descname">__weakref__</code><a class="headerlink" href="#serendipyty.seismic.modelling.bcs.BaseBc.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="serendipyty.seismic.modelling.bcs.PmlBc">
+<em class="property">class </em><code class="descclassname">serendipyty.seismic.modelling.bcs.</code><code class="descname">PmlBc</code><span class="sig-paren">(</span><em>npml=20</em>, <em>freesurface=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/modelling/bcs.html#PmlBc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.modelling.bcs.PmlBc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>PMLs boundary conditions.</p>
+<p>This class defines the basic parameters for the PMLs boundary conditions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>npml</strong> : int</p>
+<blockquote>
+<div><p>Number of grid points.</p>
+</div></blockquote>
+<p><strong>freesurface</strong> : bool</p>
+<blockquote class="last">
+<div><p>If True, applies a free surface on the top edge.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="serendipyty.seismic.modelling.bcs.PmlBc.__weakref__">
+<code class="descname">__weakref__</code><a class="headerlink" href="#serendipyty.seismic.modelling.bcs.PmlBc.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

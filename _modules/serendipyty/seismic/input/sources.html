@@ -123,12 +123,13 @@
 <span class="kn">import</span> <span class="nn">scipy.sparse</span> <span class="k">as</span> <span class="nn">spsp</span>
 <span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="k">import</span> <span class="n">interp1d</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PointSource&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BaseSource&#39;</span><span class="p">,</span> <span class="s1">&#39;PointSource&#39;</span><span class="p">]</span>
 
 <span class="n">__docformat__</span> <span class="o">=</span> <span class="s2">&quot;restructuredtext en&quot;</span>
 
-<span class="k">class</span> <span class="nc">SourceBase</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Base class for representing a source emitter on a grid.</span>
+
+<div class="viewcode-block" id="BaseSource"><a class="viewcode-back" href="../../../../_autosummary/serendipyty.seismic.input.sources.html#serendipyty.seismic.input.sources.BaseSource">[docs]</a><span class="k">class</span> <span class="nc">BaseSource</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Base class for representing a source emitter on a grid.</span>
 
 <span class="sd">    Methods</span>
 <span class="sd">    -------</span>
@@ -140,18 +141,15 @@
 <span class="sd">    `intensity` could conceivably become a function of time, in the future.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BaseSource.__init__"><a class="viewcode-back" href="../../../../_autosummary/serendipyty.seismic.input.sources.html#serendipyty.seismic.input.sources.BaseSource.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructor for the SourceBase class.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">shot</span><span class="o">=</span><span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shot</span> <span class="o">=</span> <span class="kc">None</span></div>
 
-    <span class="k">def</span> <span class="nf">get_source_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    <span class="n">source_count</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">get_source_count</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">set_shot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">shot</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">shot</span><span class="o">=</span><span class="n">shot</span>
+    <span class="k">def</span> <span class="nf">set_shot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shot</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shot</span> <span class="o">=</span> <span class="n">shot</span>
 
     <span class="k">def</span> <span class="nf">reset_time_series</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ts</span><span class="p">):</span>
         <span class="k">pass</span>
@@ -160,33 +158,12 @@
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Evaluation function </span><span class="se">\&#39;</span><span class="s1">f</span><span class="se">\&#39;</span><span class="s1"> must be implemented by subclass.&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">w</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">argsw</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Wavelet function must be implemented at the subclass level.&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Wavelet function must be implemented at the subclass level.&#39;</span><span class="p">)</span></div>
 
-    <span class="c1"># For subclasses to implement.</span>
-    <span class="k">def</span> <span class="nf">serialize_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">unserialize_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
-
-<div class="viewcode-block" id="PointSource"><a class="viewcode-back" href="../../../../_autosummary/serendipyty.seismic.input.sources.html#serendipyty.seismic.input.sources.PointSource">[docs]</a><span class="k">class</span> <span class="nc">PointSource</span><span class="p">(</span><span class="n">SourceBase</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Subclass of PointRepresentationBase and SourceBase for representing a</span>
+<div class="viewcode-block" id="PointSource"><a class="viewcode-back" href="../../../../_autosummary/serendipyty.seismic.input.sources.html#serendipyty.seismic.input.sources.PointSource">[docs]</a><span class="k">class</span> <span class="nc">PointSource</span><span class="p">(</span><span class="n">BaseSource</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Subclass of BaseSource for representing a</span>
 <span class="sd">    point source emitter on a grid.</span>
-
-<span class="sd">    Attributes</span>
-<span class="sd">    ----------</span>
-<span class="sd">    domain : pysit.Domain</span>
-<span class="sd">        Inherited from base class.</span>
-<span class="sd">    position : tuple of float</span>
-<span class="sd">        Inherited from base class.</span>
-<span class="sd">    sampling_operator : scipy.sparse matrix</span>
-<span class="sd">        Inherited from base class.</span>
-<span class="sd">    adjoint_sampling_operator : scipy.sparse matrix</span>
-<span class="sd">        Inherited from base class.</span>
-<span class="sd">    intensity : float, optional</span>
-<span class="sd">        Intensity of the source wavelet.</span>
-<span class="sd">    w : function or function object</span>
-<span class="sd">        Function of time that produces the source wavelet.</span>
 
 <span class="sd">    Methods</span>
 <span class="sd">    -------</span>
@@ -195,27 +172,46 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="PointSource.__init__"><a class="viewcode-back" href="../../../../_autosummary/serendipyty.seismic.input.sources.html#serendipyty.seismic.input.sources.PointSource.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Constructor for the PointSource class.</span>
+<div class="viewcode-block" id="PointSource.__init__"><a class="viewcode-back" href="../../../../_autosummary/serendipyty.seismic.input.sources.html#serendipyty.seismic.input.sources.PointSource.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;q&#39;</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Constructor for the PointSource class.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        loc : tuple of float</span>
-<span class="sd">            Coordinates of the point in the physical coordinates of the domain.</span>
-<span class="sd">        wavelet : function or function object</span>
+<span class="sd">        loc : float, ndarray</span>
+<span class="sd">            Location of the source in the physical coordinates of the domain.</span>
+<span class="sd">            loc should be a (n x 3) ndarray, where n denotes</span>
+<span class="sd">            the number of sources.</span>
+<span class="sd">        wavelet : BaseWavelet</span>
 <span class="sd">            Function of time that produces the source wavelet.</span>
+<span class="sd">            If only one source location is present, then wavelet should be a (1 x nt) ndarray.</span>
+<span class="sd">            If multiple (n) source locations are present, then wavelet can be a (1 x nt) ndarray</span>
+<span class="sd">            or a (n x nt) ndarray. In the first case, the same wavelet will be used</span>
+<span class="sd">            for all source locations.</span>
 <span class="sd">        mode : string, optional</span>
-<span class="sd">            Mode of the source.</span>
+<span class="sd">            Mode of the source. Monopole source: &#39;q&#39;, 0.</span>
+<span class="sd">            Dipole sources: &#39;fx&#39;, 1, &#39;fy&#39;, 2, &#39;fz&#39;, 3.</span>
 <span class="sd">        **kwargs : dict, optional</span>
 <span class="sd">            May be used to specify `approximation` and `approximation_width` to</span>
 <span class="sd">            base class.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="c1"># Populate parameters from the base class.</span>
-        <span class="n">SourceBase</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">loc</span> <span class="o">=</span> <span class="n">loc</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">wavelet</span> <span class="o">=</span> <span class="n">wavelet</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wavelet</span><span class="o">.</span><span class="n">nt</span>
+
+        <span class="c1"># Check dimensions of the locations array</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loc</span><span class="p">)</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ns</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">wavelet</span><span class="o">.</span><span class="n">wavelet</span><span class="p">)</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">wavelet_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ns</span>
+            <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">wavelet</span><span class="o">.</span><span class="n">wavelet</span><span class="p">)</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">ns</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">wavelet_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ns</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Something is wrong with the dimensions of the wavelet!&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Add a check on mode</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span></div>
 
 <div class="viewcode-block" id="PointSource.f"><a class="viewcode-back" href="../../../../_autosummary/serendipyty.seismic.input.sources.html#serendipyty.seismic.input.sources.PointSource.f">[docs]</a>    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">nu</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -234,15 +230,18 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">nu</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sample_interp_method</span> <span class="o">==</span> <span class="s1">&#39;sparse&#39;</span><span class="p">:</span>
-                <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adjoint_sampling_operator</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">intensity</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)))</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">shape</span><span class="p">())</span>
+                <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adjoint_sampling_operator</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">intensity</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)))</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">shape</span><span class="p">())</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adjoint_sampling_operator</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">intensity</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">shape</span><span class="p">())</span>
+                <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adjoint_sampling_operator</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">intensity</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">shape</span><span class="p">())</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sample_interp_method</span> <span class="o">==</span> <span class="s1">&#39;sparse&#39;</span><span class="p">:</span>
-                <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adjoint_sampling_operator</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">intensity</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">nu</span><span class="o">=</span><span class="n">nu</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)))</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">shape</span><span class="p">())</span>
+                <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adjoint_sampling_operator</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">intensity</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">nu</span><span class="o">=</span><span class="n">nu</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)))</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">shape</span><span class="p">())</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adjoint_sampling_operator</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">intensity</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">nu</span><span class="o">=</span><span class="n">nu</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">shape</span><span class="p">())</span></div></div>
-
+                <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adjoint_sampling_operator</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">intensity</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">nu</span><span class="o">=</span><span class="n">nu</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">shape</span><span class="p">())</span></div></div>
 </pre></div>
 
     </div>

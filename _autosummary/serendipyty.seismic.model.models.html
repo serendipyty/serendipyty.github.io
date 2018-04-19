@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>serendipyty.seismic.input.wavelets &#8212; Serendipyty: A Python toolbox for teaching Geophysics 0.1 documentation</title>
+    <title>serendipyty.seismic.model.models &#8212; Serendipyty: A Python toolbox for teaching Geophysics 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -75,7 +75,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">serendipyty.seismic.input.wavelets</a></li>
+<li><a class="reference internal" href="#">serendipyty.seismic.model.models</a></li>
 </ul>
 </ul>
 </li>
@@ -91,7 +91,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="../_sources/_autosummary/serendipyty.seismic.input.wavelets.rst.txt"
+  <a href="../_sources/_autosummary/serendipyty.seismic.model.models.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -115,8 +115,8 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="module-serendipyty.seismic.input.wavelets">
-<span id="serendipyty-seismic-input-wavelets"></span><h1>serendipyty.seismic.input.wavelets<a class="headerlink" href="#module-serendipyty.seismic.input.wavelets" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-serendipyty.seismic.model.models">
+<span id="serendipyty-seismic-model-models"></span><h1>serendipyty.seismic.model.models<a class="headerlink" href="#module-serendipyty.seismic.model.models" title="Permalink to this headline">¶</a></h1>
 <p>Created on Wed Feb  7 15:10:52 2018</p>
 <p>&#64;author: Filippo Broggini (ETH Zürich) - <a class="reference external" href="mailto:filippo&#46;broggini&#37;&#52;&#48;erdw&#46;ethz&#46;ch">filippo<span>&#46;</span>broggini<span>&#64;</span>erdw<span>&#46;</span>ethz<span>&#46;</span>ch</a></p>
 <p class="rubric">Classes</p>
@@ -126,21 +126,33 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#serendipyty.seismic.input.wavelets.RickerWavelet" title="serendipyty.seismic.input.wavelets.RickerWavelet"><code class="xref py py-obj docutils literal"><span class="pre">RickerWavelet</span></code></a>(t[,&nbsp;dt,&nbsp;fc,&nbsp;delay])</td>
-<td>Ricker wavelet.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#serendipyty.seismic.model.models.AcousticModel" title="serendipyty.seismic.model.models.AcousticModel"><code class="xref py py-obj docutils literal"><span class="pre">AcousticModel</span></code></a>(dx,&nbsp;vp,&nbsp;rho[,&nbsp;dy,&nbsp;dz])</td>
+<td>Acoustic model.</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">WaveletBase</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#serendipyty.seismic.model.models.BaseModel" title="serendipyty.seismic.model.models.BaseModel"><code class="xref py py-obj docutils literal"><span class="pre">BaseModel</span></code></a>(dx,&nbsp;dy,&nbsp;dz)</td>
+<td>Base class for velocity and density models.</td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
-<dt id="serendipyty.seismic.input.wavelets.BaseWavelet">
-<em class="property">class </em><code class="descclassname">serendipyty.seismic.input.wavelets.</code><code class="descname">BaseWavelet</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/input/wavelets.html#BaseWavelet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.input.wavelets.BaseWavelet" title="Permalink to this definition">¶</a></dt>
+<dt id="serendipyty.seismic.model.models.BaseModel">
+<em class="property">class </em><code class="descclassname">serendipyty.seismic.model.models.</code><code class="descname">BaseModel</code><span class="sig-paren">(</span><em>dx</em>, <em>dy</em>, <em>dz</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/model/models.html#BaseModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.model.models.BaseModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
-<p>Base class for source wavelets.</p>
+<p>Base class for velocity and density models.</p>
 <p>This is implemented as a function object, so the magic happens in the
 <cite>__call__</cite> member function.</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>n</strong></td>
+<td>(list of int) Dimensions in (x, y, z)</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Methods</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -153,87 +165,45 @@
 </tr>
 </tbody>
 </table>
-<dl class="method">
-<dt id="serendipyty.seismic.input.wavelets.BaseWavelet.__call__">
-<code class="descname">__call__</code><span class="sig-paren">(</span><em>it=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/input/wavelets.html#BaseWavelet.__call__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.input.wavelets.BaseWavelet.__call__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Callable object method for the seismic sources.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>it</strong> : int, array-like</p>
-<blockquote class="last">
-<div><p>Index(es) at which to evaluate wavelet.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 <dl class="attribute">
-<dt id="serendipyty.seismic.input.wavelets.BaseWavelet.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#serendipyty.seismic.input.wavelets.BaseWavelet.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dt id="serendipyty.seismic.model.models.BaseModel.__weakref__">
+<code class="descname">__weakref__</code><a class="headerlink" href="#serendipyty.seismic.model.models.BaseModel.__weakref__" title="Permalink to this definition">¶</a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
-<dt id="serendipyty.seismic.input.wavelets.RickerWavelet">
-<em class="property">class </em><code class="descclassname">serendipyty.seismic.input.wavelets.</code><code class="descname">RickerWavelet</code><span class="sig-paren">(</span><em>t</em>, <em>dt=None</em>, <em>fc=20.0</em>, <em>delay=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/input/wavelets.html#RickerWavelet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.input.wavelets.RickerWavelet" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#serendipyty.seismic.input.wavelets.BaseWavelet" title="serendipyty.seismic.input.wavelets.BaseWavelet"><code class="xref py py-class docutils literal"><span class="pre">serendipyty.seismic.input.wavelets.BaseWavelet</span></code></a></p>
-<p>Ricker wavelet.</p>
-<p>The Ricker wavelet is the negative 2nd derivative of a Gaussian <a class="reference internal" href="#r13" id="id1">[R13]</a>.</p>
+<dt id="serendipyty.seismic.model.models.AcousticModel">
+<em class="property">class </em><code class="descclassname">serendipyty.seismic.model.models.</code><code class="descname">AcousticModel</code><span class="sig-paren">(</span><em>dx</em>, <em>vp</em>, <em>rho</em>, <em>dy=None</em>, <em>dz=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/model/models.html#AcousticModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.model.models.AcousticModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#serendipyty.seismic.model.models.BaseModel" title="serendipyty.seismic.model.models.BaseModel"><code class="xref py py-class docutils literal"><span class="pre">serendipyty.seismic.model.models.BaseModel</span></code></a></p>
+<p>Acoustic model.</p>
+<p>Velocity and density models for an acoustic medium.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>t</strong> : float, ndarray</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>dx</strong> : float</p>
 <blockquote>
-<div><p>Time array.</p>
+<div><p>Spatial discretization in the x direction.</p>
 </div></blockquote>
-<p><strong>fc</strong> : float, optional</p>
+<p><strong>dz</strong> : float, optional</p>
 <blockquote>
-<div><p>Central (peak) frequency of the wavelet</p>
+<div><p>Spatial discretization in the y direction.</p>
 </div></blockquote>
-<p><strong>delay</strong> : float, optional</p>
+<p><strong>dz</strong> : float, optional</p>
+<blockquote>
+<div><p>Spatial discretization in the z direction.</p>
+</div></blockquote>
+<p><strong>vp</strong> : float, ndarray</p>
+<blockquote>
+<div><p>Velocity model</p>
+</div></blockquote>
+<p><strong>rho</strong> : float, ndarray</p>
 <blockquote class="last">
-<div><p>Time delay to be applied to the wavelet. The default delay is 1/<cite>fc</cite>.</p>
+<div><p>Density  model</p>
 </div></blockquote>
 </td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r13" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R13]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> N. Ricker, The form and laws of propagation of seismic wavelets,
-Geophysics, vol. 18, pp. 10-40, 1953.</td></tr>
-</tbody>
-</table>
-<p class="rubric">Attributes</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="18%" />
-<col width="82%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>wavelet</strong></td>
-<td>(float, ndarray) Array that contains the wavelet.</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Methods</p>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">__call__</span></code>([it])</td>
-<td>Callable object method for the seismic sources.</td>
 </tr>
 </tbody>
 </table>

@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>serendipyty.seismic.modelling.awe2d &#8212; Serendipyty: A Python toolbox for teaching Geophysics 0.1 documentation</title>
+    <title>serendipyty.seismic.hpc.hpc &#8212; Serendipyty: A Python toolbox for teaching Geophysics 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -75,7 +75,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">serendipyty.seismic.modelling.awe2d</a></li>
+<li><a class="reference internal" href="#">serendipyty.seismic.hpc.hpc</a></li>
 </ul>
 </ul>
 </li>
@@ -91,7 +91,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="../_sources/_autosummary/serendipyty.seismic.modelling.awe2d.rst.txt"
+  <a href="../_sources/_autosummary/serendipyty.seismic.hpc.hpc.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -115,25 +115,49 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="module-serendipyty.seismic.modelling.awe2d">
-<span id="serendipyty-seismic-modelling-awe2d"></span><h1>serendipyty.seismic.modelling.awe2d<a class="headerlink" href="#module-serendipyty.seismic.modelling.awe2d" title="Permalink to this headline">¶</a></h1>
-<p>Created on Fri Sep 30 13:58:34 2016</p>
+  <div class="section" id="module-serendipyty.seismic.hpc.hpc">
+<span id="serendipyty-seismic-hpc-hpc"></span><h1>serendipyty.seismic.hpc.hpc<a class="headerlink" href="#module-serendipyty.seismic.hpc.hpc" title="Permalink to this headline">¶</a></h1>
+<p>Created on Wed Feb  7 15:10:52 2018</p>
 <p>&#64;author: Filippo Broggini (ETH Zürich) - <a class="reference external" href="mailto:filippo&#46;broggini&#37;&#52;&#48;erdw&#46;ethz&#46;ch">filippo<span>&#46;</span>broggini<span>&#64;</span>erdw<span>&#46;</span>ethz<span>&#46;</span>ch</a></p>
-<p class="rubric">Functions</p>
+<p class="rubric">Classes</p>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">calc_full</span></code></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">calc_full_old</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#serendipyty.seismic.hpc.hpc.BaseHpc" title="serendipyty.seismic.hpc.hpc.BaseHpc"><code class="xref py py-obj docutils literal"><span class="pre">BaseHpc</span></code></a>([omp_num_threads])</td>
+<td>Base class for HPC parameters.</td>
 </tr>
 </tbody>
 </table>
+<dl class="class">
+<dt id="serendipyty.seismic.hpc.hpc.BaseHpc">
+<em class="property">class </em><code class="descclassname">serendipyty.seismic.hpc.hpc.</code><code class="descname">BaseHpc</code><span class="sig-paren">(</span><em>omp_num_threads=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/hpc/hpc.html#BaseHpc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.hpc.hpc.BaseHpc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Base class for HPC parameters.</p>
+<p>This class defines the basic parameters for the HPC implementations
+used in the Serendipyty package.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>omp_num_threads</strong> : int, optional</p>
+<blockquote class="last">
+<div><p>Number of computational threads</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="serendipyty.seismic.hpc.hpc.BaseHpc.__weakref__">
+<code class="descname">__weakref__</code><a class="headerlink" href="#serendipyty.seismic.hpc.hpc.BaseHpc.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

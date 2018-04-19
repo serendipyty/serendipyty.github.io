@@ -1,0 +1,22 @@
+serendipyty\.seismic\.hpc\.hpc
+==============================
+
+.. automodule:: serendipyty.seismic.hpc.hpc
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      BaseHpc
+   
+   
+
+   
+   
+   

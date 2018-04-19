@@ -60,7 +60,10 @@
      href="../index.html">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"></ul>
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Developer guide</a></li>
+</ul>
+</ul>
 </li>
               
                 <li class="dropdown">
@@ -124,46 +127,52 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#serendipyty.seismic.input.sources.PointSource" title="serendipyty.seismic.input.sources.PointSource"><code class="xref py py-obj docutils literal"><span class="pre">PointSource</span></code></a>(loc,&nbsp;wavelet[,&nbsp;mode])</td>
-<td>Subclass of PointRepresentationBase and SourceBase for representing a point source emitter on a grid.</td>
+<td>Subclass of BaseSource for representing a point source emitter on a grid.</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">SourceBase</span></code>(**kwargs)</td>
-<td>Base class for representing a source emitter on a grid.</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">SourceBase</span></code></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
-<dt id="serendipyty.seismic.input.sources.PointSource">
-<em class="property">class </em><code class="descclassname">serendipyty.seismic.input.sources.</code><code class="descname">PointSource</code><span class="sig-paren">(</span><em>loc</em>, <em>wavelet</em>, <em>mode='q'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/input/sources.html#PointSource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.input.sources.PointSource" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">serendipyty.seismic.input.sources.SourceBase</span></code></p>
-<p>Subclass of PointRepresentationBase and SourceBase for representing a
-point source emitter on a grid.</p>
-<p class="rubric">Attributes</p>
+<dt id="serendipyty.seismic.input.sources.BaseSource">
+<em class="property">class </em><code class="descclassname">serendipyty.seismic.input.sources.</code><code class="descname">BaseSource</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/input/sources.html#BaseSource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.input.sources.BaseSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Base class for representing a source emitter on a grid.</p>
+<p class="rubric">Notes</p>
+<p><cite>intensity</cite> could conceivably become a function of time, in the future.</p>
+<p class="rubric">Methods</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="27%" />
-<col width="73%" />
+<col width="22%" />
+<col width="78%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><strong>domain</strong></td>
-<td>(pysit.Domain) Inherited from base class.</td>
-</tr>
-<tr class="row-even"><td><strong>position</strong></td>
-<td>(tuple of float) Inherited from base class.</td>
-</tr>
-<tr class="row-odd"><td><strong>sampling_operator</strong></td>
-<td>(scipy.sparse matrix) Inherited from base class.</td>
-</tr>
-<tr class="row-even"><td><strong>adjoint_sampling_operator</strong></td>
-<td>(scipy.sparse matrix) Inherited from base class.</td>
-</tr>
-<tr class="row-odd"><td><strong>intensity</strong></td>
-<td>(float, optional) Intensity of the source wavelet.</td>
-</tr>
-<tr class="row-even"><td><strong>w</strong></td>
-<td>(function or function object) Function of time that produces the source wavelet.</td>
+<tr class="row-odd"><td><strong>f(t, **kwargs)</strong></td>
+<td>Evaluate w on grid numerically, must be implemented by sub class.</td>
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="serendipyty.seismic.input.sources.BaseSource.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/input/sources.html#BaseSource.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.input.sources.BaseSource.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor for the SourceBase class.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="serendipyty.seismic.input.sources.BaseSource.__weakref__">
+<code class="descname">__weakref__</code><a class="headerlink" href="#serendipyty.seismic.input.sources.BaseSource.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="serendipyty.seismic.input.sources.PointSource">
+<em class="property">class </em><code class="descclassname">serendipyty.seismic.input.sources.</code><code class="descname">PointSource</code><span class="sig-paren">(</span><em>loc</em>, <em>wavelet</em>, <em>mode='q'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/input/sources.html#PointSource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.input.sources.PointSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#serendipyty.seismic.input.sources.BaseSource" title="serendipyty.seismic.input.sources.BaseSource"><code class="xref py py-class docutils literal"><span class="pre">serendipyty.seismic.input.sources.BaseSource</span></code></a></p>
+<p>Subclass of BaseSource for representing a
+point source emitter on a grid.</p>
 <p class="rubric">Methods</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -178,23 +187,30 @@ point source emitter on a grid.</p>
 </table>
 <dl class="method">
 <dt id="serendipyty.seismic.input.sources.PointSource.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>loc</em>, <em>wavelet</em>, <em>mode='q'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/input/sources.html#PointSource.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.input.sources.PointSource.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>loc</em>, <em>wavelet</em>, <em>mode='q'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/input/sources.html#PointSource.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.input.sources.PointSource.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor for the PointSource class.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>loc</strong> : tuple of float</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>loc</strong> : float, ndarray</p>
 <blockquote>
-<div><p>Coordinates of the point in the physical coordinates of the domain.</p>
+<div><p>Location of the source in the physical coordinates of the domain.
+loc should be a (n x 3) ndarray, where n denotes
+the number of sources.</p>
 </div></blockquote>
-<p><strong>wavelet</strong> : function or function object</p>
+<p><strong>wavelet</strong> : BaseWavelet</p>
 <blockquote>
-<div><p>Function of time that produces the source wavelet.</p>
+<div><p>Function of time that produces the source wavelet.
+If only one source location is present, then wavelet should be a (1 x nt) ndarray.
+If multiple (n) source locations are present, then wavelet can be a (1 x nt) ndarray
+or a (n x nt) ndarray. In the first case, the same wavelet will be used
+for all source locations.</p>
 </div></blockquote>
 <p><strong>mode</strong> : string, optional</p>
 <blockquote>
-<div><p>Mode of the source.</p>
+<div><p>Mode of the source. Monopole source: ‘q’, 0.
+Dipole sources: ‘fx’, 1, ‘fy’, 2, ‘fz’, 3.</p>
 </div></blockquote>
 <p><strong>**kwargs</strong> : dict, optional</p>
 <blockquote class="last">

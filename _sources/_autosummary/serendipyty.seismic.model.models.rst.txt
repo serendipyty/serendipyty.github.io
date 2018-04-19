@@ -1,0 +1,23 @@
+serendipyty\.seismic\.model\.models
+===================================
+
+.. automodule:: serendipyty.seismic.model.models
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      AcousticModel
+      BaseModel
+   
+   
+
+   
+   
+   

@@ -1,0 +1,23 @@
+serendipyty\.seismic\.modelling\.bcs
+====================================
+
+.. automodule:: serendipyty.seismic.modelling.bcs
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      BaseBc
+      PmlBc
+   
+   
+
+   
+   
+   
