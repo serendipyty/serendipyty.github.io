@@ -126,14 +126,33 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">calc_full</span></code></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">calc_full_old</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#serendipyty.seismic.modelling.awe2d.forward" title="serendipyty.seismic.modelling.awe2d.forward"><code class="xref py py-obj docutils literal"><span class="pre">forward</span></code></a>(model,&nbsp;src,&nbsp;outparam,&nbsp;bc[,&nbsp;hpc])</td>
+<td>Acoustic wave equation forward modeling.</td>
 </tr>
 </tbody>
 </table>
+<dl class="function">
+<dt id="serendipyty.seismic.modelling.awe2d.forward">
+<code class="descclassname">serendipyty.seismic.modelling.awe2d.</code><code class="descname">forward</code><span class="sig-paren">(</span><em>model</em>, <em>src</em>, <em>outparam</em>, <em>bc</em>, <em>hpc=None</em>, <em>int verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#serendipyty.seismic.modelling.awe2d.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Acoustic wave equation forward modeling.</p>
+<p>Acoustic wave equation
+forward modeling.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>model</strong> : BaseModel</p>
+<blockquote class="last">
+<div><p>Location of the source in the physical coordinates of the domain.
+loc should be a (n x 3) ndarray, where n denotes
+the number of sources.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 
 

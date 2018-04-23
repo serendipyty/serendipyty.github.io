@@ -9,8 +9,7 @@ serendipyty\.seismic\.modelling\.awe2d
 
    .. autosummary::
    
-      calc_full
-      calc_full_old
+      forward
    
    
 

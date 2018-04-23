@@ -13,8 +13,8 @@ serendipyty\.seismic\.input\.wavelets
 
    .. autosummary::
    
+      BaseWavelet
       RickerWavelet
-      WaveletBase
    
    
 

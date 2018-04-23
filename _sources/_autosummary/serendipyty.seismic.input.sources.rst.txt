@@ -13,8 +13,8 @@ serendipyty\.seismic\.input\.sources
 
    .. autosummary::
    
+      BaseSource
       PointSource
-      SourceBase
    
    
 
