@@ -129,27 +129,30 @@
 <tr class="row-odd"><td><a class="reference internal" href="#serendipyty.seismic.model.models.AcousticModel" title="serendipyty.seismic.model.models.AcousticModel"><code class="xref py py-obj docutils literal"><span class="pre">AcousticModel</span></code></a>(dx,&nbsp;vp,&nbsp;rho[,&nbsp;dy,&nbsp;dz])</td>
 <td>Acoustic model.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#serendipyty.seismic.model.models.BaseModel" title="serendipyty.seismic.model.models.BaseModel"><code class="xref py py-obj docutils literal"><span class="pre">BaseModel</span></code></a>(dx,&nbsp;dy,&nbsp;dz)</td>
+<tr class="row-even"><td><a class="reference internal" href="#serendipyty.seismic.model.models.BaseModel" title="serendipyty.seismic.model.models.BaseModel"><code class="xref py py-obj docutils literal"><span class="pre">BaseModel</span></code></a>(modeltype,&nbsp;dx,&nbsp;dy,&nbsp;dz)</td>
 <td>Base class for velocity and density models.</td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
 <dt id="serendipyty.seismic.model.models.BaseModel">
-<em class="property">class </em><code class="descclassname">serendipyty.seismic.model.models.</code><code class="descname">BaseModel</code><span class="sig-paren">(</span><em>dx</em>, <em>dy</em>, <em>dz</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/model/models.html#BaseModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.model.models.BaseModel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<em class="property">class </em><code class="descclassname">serendipyty.seismic.model.models.</code><code class="descname">BaseModel</code><span class="sig-paren">(</span><em>modeltype</em>, <em>dx</em>, <em>dy</em>, <em>dz</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/model/models.html#BaseModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.model.models.BaseModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Base class for velocity and density models.</p>
 <p>This is implemented as a function object, so the magic happens in the
 <cite>__call__</cite> member function.</p>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="12%" />
-<col width="88%" />
+<col width="18%" />
+<col width="82%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><strong>n</strong></td>
 <td>(list of int) Dimensions in (x, y, z)</td>
+</tr>
+<tr class="row-even"><td><strong>ndim</strong></td>
+<td>(int) Number of dimensions</td>
 </tr>
 </tbody>
 </table>
@@ -187,7 +190,7 @@
 <blockquote>
 <div><p>Spatial discretization in the x direction.</p>
 </div></blockquote>
-<p><strong>dz</strong> : float, optional</p>
+<p><strong>dy</strong> : float, optional</p>
 <blockquote>
 <div><p>Spatial discretization in the y direction.</p>
 </div></blockquote>
@@ -204,6 +207,18 @@
 <div><p>Density  model</p>
 </div></blockquote>
 </td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">plot</span></code>([style])</td>
+<td></td>
 </tr>
 </tbody>
 </table>

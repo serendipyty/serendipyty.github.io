@@ -137,7 +137,7 @@
 <dl class="class">
 <dt id="serendipyty.seismic.input.sources.BaseSource">
 <em class="property">class </em><code class="descclassname">serendipyty.seismic.input.sources.</code><code class="descname">BaseSource</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/input/sources.html#BaseSource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.input.sources.BaseSource" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Base class for representing a source emitter on a grid.</p>
 <p class="rubric">Notes</p>
 <p><cite>intensity</cite> could conceivably become a function of time, in the future.</p>
@@ -157,6 +157,12 @@
 <dt id="serendipyty.seismic.input.sources.BaseSource.__init__">
 <code class="descname">__init__</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/input/sources.html#BaseSource.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.input.sources.BaseSource.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor for the BaseSource class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="serendipyty.seismic.input.sources.BaseSource.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><em>tmax=None</em>, <em>aspect='auto'</em>, <em>style='wavelet'</em>, <em>figsize=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/input/sources.html#BaseSource.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.input.sources.BaseSource.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a plot</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -217,31 +223,6 @@ Dipole sources: ‘fx’, 1, ‘fy’, 2, ‘fz’, 3.</p>
 <div><p>May be used to specify <cite>approximation</cite> and <cite>approximation_width</cite> to
 base class.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="serendipyty.seismic.input.sources.PointSource.f">
-<code class="descname">f</code><span class="sig-paren">(</span><em>t=0.0</em>, <em>nu=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/input/sources.html#PointSource.f"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.input.sources.PointSource.f" title="Permalink to this definition">¶</a></dt>
-<dd><p>Evaluate source emitter at time t on numerical grid.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>t</strong> : float</p>
-<blockquote>
-<div><p>Time at which to evaluate the source wavelet.</p>
-</div></blockquote>
-<p><strong>**kwargs</strong> : dict, optional</p>
-<blockquote>
-<div><p>May pass additional parameters to the source wavelet call.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The function w evaluated on a grid as an ndarray shaped like the domain.</p>
 </td>
 </tr>
 </tbody>

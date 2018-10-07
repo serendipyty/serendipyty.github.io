@@ -137,7 +137,7 @@
 <dl class="class">
 <dt id="serendipyty.seismic.modelling.bcs.BaseBc">
 <em class="property">class </em><code class="descclassname">serendipyty.seismic.modelling.bcs.</code><code class="descname">BaseBc</code><span class="sig-paren">(</span><em>omp_num_threads=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/modelling/bcs.html#BaseBc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.modelling.bcs.BaseBc" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Base class for boundary conditions.</p>
 <p>This class defines the basic parameters for the boundary conditions
 used in the modelling routines.</p>
@@ -164,7 +164,7 @@ used in the modelling routines.</p>
 <dl class="class">
 <dt id="serendipyty.seismic.modelling.bcs.PmlBc">
 <em class="property">class </em><code class="descclassname">serendipyty.seismic.modelling.bcs.</code><code class="descname">PmlBc</code><span class="sig-paren">(</span><em>npml=20</em>, <em>freesurface=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/modelling/bcs.html#PmlBc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.modelling.bcs.PmlBc" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>PMLs boundary conditions.</p>
 <p>This class defines the basic parameters for the PMLs boundary conditions.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -183,6 +183,21 @@ used in the modelling routines.</p>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>The perfectly matched layer (PML) absorbing boundary conditions
+are implemented following <a class="reference internal" href="#r79" id="id1">[R79]</a>.</p>
+<table class="docutils citation" frame="void" id="r79" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R79]</a></td><td><ol class="first last upperalpha simple" start="4">
+<li>Komatitsch and J. Tromp,</li>
+</ol>
+</td></tr>
+</tbody>
+</table>
+<p>“A perfectly matched layer absorbing boundary condition
+for the second-order seismic wave equation”,
+Geophys. J. Int. (2003) 154, 146–153</p>
 <dl class="attribute">
 <dt id="serendipyty.seismic.modelling.bcs.PmlBc.__weakref__">
 <code class="descname">__weakref__</code><a class="headerlink" href="#serendipyty.seismic.modelling.bcs.PmlBc.__weakref__" title="Permalink to this definition">¶</a></dt>

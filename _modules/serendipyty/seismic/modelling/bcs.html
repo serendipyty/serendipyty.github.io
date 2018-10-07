@@ -149,6 +149,15 @@
 <span class="sd">    freesurface : bool</span>
 <span class="sd">        If True, applies a free surface on the top edge.</span>
 
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The perfectly matched layer (PML) absorbing boundary conditions</span>
+<span class="sd">    are implemented following [1]_.</span>
+
+<span class="sd">    .. [1] D. Komatitsch and J. Tromp,</span>
+<span class="sd">    &quot;A perfectly matched layer absorbing boundary condition</span>
+<span class="sd">    for the second-order seismic wave equation&quot;,</span>
+<span class="sd">    Geophys. J. Int. (2003) 154, 146–153</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">npml</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">freesurface</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
