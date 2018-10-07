@@ -168,23 +168,10 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">dz</span> <span class="o">=</span> <span class="n">dz</span>
         <span class="c1">#raise NotImplementedError(&#39;&#39;)</span>
 
-    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="n">vis</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
-
-    <span class="c1"># def __call__(self, it=None, **kwargs):</span>
-    <span class="c1">#     r&quot;&quot;&quot;Callable object method for the seismic sources.</span>
-    <span class="c1">#</span>
-    <span class="c1">#     Parameters</span>
-    <span class="c1">#     ----------</span>
-    <span class="c1">#     it : int, array-like</span>
-    <span class="c1">#         Index(es) at which to evaluate wavelet.</span>
-    <span class="c1">#</span>
-    <span class="c1">#     &quot;&quot;&quot;</span>
-    <span class="c1">#</span>
-    <span class="c1">#     if it is not None:</span>
-    <span class="c1">#         return self._evaluate_time(it)</span>
-    <span class="c1">#     else:</span>
-    <span class="c1">#         raise ValueError(&#39;A time must be provided.&#39;)</span>
+<div class="viewcode-block" id="BaseModel.plot"><a class="viewcode-back" href="../../../../_autosummary/serendipyty.seismic.model.models.html#serendipyty.seismic.model.models.BaseModel.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot; Plot the model parameters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">vis</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="AcousticModel"><a class="viewcode-back" href="../../../../_autosummary/serendipyty.seismic.model.models.html#serendipyty.seismic.model.models.AcousticModel">[docs]</a><span class="k">class</span> <span class="nc">AcousticModel</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
@@ -203,7 +190,7 @@
 <span class="sd">    vp : float, ndarray</span>
 <span class="sd">        Velocity model</span>
 <span class="sd">    rho : float, ndarray</span>
-<span class="sd">        Density  model</span>
+<span class="sd">        Density model</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
