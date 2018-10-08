@@ -44,6 +44,7 @@ Content
 .. toctree::
     :maxdepth: 2
 
+    examples
     development
 
 Indices and tables
