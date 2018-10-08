@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>serendipyty.seismic.utils.fd &#8212; Serendipyty: A Python toolbox for teaching Geophysics 0.0.4 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Serendipyty</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Developer guide</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">serendipyty.seismic.utils.fd</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/_autosummary/serendipyty.seismic.utils.fd.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="module-serendipyty.seismic.utils.fd">
+<span id="serendipyty-seismic-utils-fd"></span><h1>serendipyty.seismic.utils.fd<a class="headerlink" href="#module-serendipyty.seismic.utils.fd" title="Permalink to this headline">¶</a></h1>
+<p>Created on Wed Dec 7 11:35:44 2016</p>
+<p>&#64;author: Filippo Broggini (ETH Zürich) - <a class="reference external" href="mailto:filippo&#46;broggini&#37;&#52;&#48;erdw&#46;ethz&#46;ch">filippo<span>&#46;</span>broggini<span>&#64;</span>erdw<span>&#46;</span>ethz<span>&#46;</span>ch</a></p>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#serendipyty.seismic.utils.fd.dispersion" title="serendipyty.seismic.utils.fd.dispersion"><code class="xref py py-obj docutils literal"><span class="pre">dispersion</span></code></a>(vmin,&nbsp;dx,&nbsp;fc[,&nbsp;coeff])</td>
+<td>Compute maximum dt for a stable simulation.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#serendipyty.seismic.utils.fd.fdtaylorcoeff" title="serendipyty.seismic.utils.fd.fdtaylorcoeff"><code class="xref py py-obj docutils literal"><span class="pre">fdtaylorcoeff</span></code></a>(k,&nbsp;xbar,&nbsp;x)</td>
+<td>Compute coefficients for finite difference approximation.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#serendipyty.seismic.utils.fd.stability" title="serendipyty.seismic.utils.fd.stability"><code class="xref py py-obj docutils literal"><span class="pre">stability</span></code></a>(vmax,&nbsp;dx,&nbsp;dt)</td>
+<td>Compute maximum dt for a stable simulation.</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="serendipyty.seismic.utils.fd.stability">
+<code class="descclassname">serendipyty.seismic.utils.fd.</code><code class="descname">stability</code><span class="sig-paren">(</span><em>vmax</em>, <em>dx</em>, <em>dt</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/utils/fd.html#stability"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.utils.fd.stability" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute maximum dt for a stable simulation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vmax: float</strong></p>
+<blockquote>
+<div><p>Maximum velocity of the medium</p>
+</div></blockquote>
+<p><strong>dx: float</strong></p>
+<blockquote>
+<div><p>Grid discretization.</p>
+</div></blockquote>
+<p><strong>dt: float</strong></p>
+<blockquote>
+<div><p>Temporal discretization.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dt_stable: float</p>
+<blockquote class="last">
+<div><p>Maximum temporal discretization.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="serendipyty.seismic.utils.fd.dispersion">
+<code class="descclassname">serendipyty.seismic.utils.fd.</code><code class="descname">dispersion</code><span class="sig-paren">(</span><em>vmin</em>, <em>dx</em>, <em>fc</em>, <em>coeff=2.0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/utils/fd.html#dispersion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.utils.fd.dispersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute maximum dt for a stable simulation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vmin: float</strong></p>
+<blockquote>
+<div><p>Minimum velocity of the medium</p>
+</div></blockquote>
+<p><strong>dx: float</strong></p>
+<blockquote>
+<div><p>Grid discretization.</p>
+</div></blockquote>
+<p><strong>fc: float</strong></p>
+<blockquote>
+<div><p>Central (peak) frequency of the source wavelet.</p>
+</div></blockquote>
+<p><strong>coeff: float</strong></p>
+<blockquote>
+<div><p>Coefficient to compute the maximum frequency of the wavelet:
+fmax = coeff * fc.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dt_stable: float</p>
+<blockquote class="last">
+<div><p>Maximum temporal discretization.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="serendipyty.seismic.utils.fd.fdtaylorcoeff">
+<code class="descclassname">serendipyty.seismic.utils.fd.</code><code class="descname">fdtaylorcoeff</code><span class="sig-paren">(</span><em>k</em>, <em>xbar</em>, <em>x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/utils/fd.html#fdtaylorcoeff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.utils.fd.fdtaylorcoeff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute coefficients for finite difference approximation.</p>
+<p>Compute coefficients for finite difference approximation for the
+derivative of order k at xbar based on grid values at points in x.</p>
+<p class="rubric">Notes</p>
+<p>This function returns a row vector c of dimension 1 by n, where n=length(x),
+containing coefficients to approximate <span class="math">\(u^{(k)}(xbar)\)</span>,
+the k’th derivative of u evaluated at xbar,  based on n values
+of u at x(1), x(2), … x(n).
+If U is a column vector containing u(x) at these n points, then
+c*U will give the approximation to <span class="math">\(u^{(k)}(xbar)\)</span>.
+Note for k=0 this can be used to evaluate the interpolating polynomial
+itself.
+Requires length(x) &gt; k.
+Usually the elements x(i) are monotonically increasing
+and x(1) &lt;= xbar &lt;= x(n), but neither condition is required.
+The x values need not be equally spaced but must be distinct.
+This program should give the same results as fdcoeffV.m, but for large
+values of n is much more stable numerically.
+Based on the program “weights” in <a class="reference internal" href="#r13" id="id1">[R13]</a>.</p>
+<p>Note: Forberg’s algorithm can be used to simultaneously compute the
+coefficients for derivatives of order 0, 1, …, m where m &lt;= n-1.
+This gives a coefficient matrix C(1:n,1:m) whose k’th column gives
+the coefficients for the k’th derivative.
+In this version we set m=k and only compute the coefficients for
+derivatives of order up to order k, and then return only the k’th column
+of the resulting C matrix (converted to a row vector).
+This routine is then compatible with fdcoeffV.
+It can be easily modified to return the whole array if desired.</p>
+<p>From  <a class="reference external" href="http://www.amath.washington.edu/~rjl/fdmbook/">http://www.amath.washington.edu/~rjl/fdmbook/</a> (2007).</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r13" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[R13]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> B. Fornberg, “Calculation of weights in finite difference formulas”,
+SIAM Review 40 (1998), pp. 685-691.</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017-2018, Filippo Broggini.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

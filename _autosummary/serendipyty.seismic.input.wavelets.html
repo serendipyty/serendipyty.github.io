@@ -3,13 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>serendipyty.seismic.input.wavelets &#8212; Serendipyty: A Python toolbox for teaching Geophysics 0.1 documentation</title>
+    <title>serendipyty.seismic.input.wavelets &#8212; Serendipyty: A Python toolbox for teaching Geophysics 0.0.4 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1',
+        VERSION:     '0.0.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           Serendipyty</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.4</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -165,7 +165,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>it</strong> : int, array-like</p>
 <blockquote class="last">
-<div><p>Index(es) at which to evaluate wavelet.</p>
+<div><p>Index(es) at which to evaluate the wavelet.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -186,7 +186,7 @@
 <em class="property">class </em><code class="descclassname">serendipyty.seismic.input.wavelets.</code><code class="descname">RickerWavelet</code><span class="sig-paren">(</span><em>t</em>, <em>dt=None</em>, <em>fc=20.0</em>, <em>delay=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/input/wavelets.html#RickerWavelet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.input.wavelets.RickerWavelet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#serendipyty.seismic.input.wavelets.BaseWavelet" title="serendipyty.seismic.input.wavelets.BaseWavelet"><code class="xref py py-class docutils literal"><span class="pre">serendipyty.seismic.input.wavelets.BaseWavelet</span></code></a></p>
 <p>Ricker wavelet.</p>
-<p>The Ricker wavelet is the negative 2nd derivative of a Gaussian <a class="reference internal" href="#r14" id="id1">[R14]</a>.</p>
+<p>The Ricker wavelet is the negative 2nd derivative of a Gaussian <a class="reference internal" href="#r13" id="id1">[R13]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -197,21 +197,21 @@
 </div></blockquote>
 <p><strong>fc</strong> : float, optional</p>
 <blockquote>
-<div><p>Central (peak) frequency of the wavelet</p>
+<div><p>Central (peak) frequency of the wavelet.</p>
 </div></blockquote>
 <p><strong>delay</strong> : float, optional</p>
 <blockquote class="last">
-<div><p>Time delay to be applied to the wavelet. The default delay is 1/<cite>fc</cite>.</p>
+<div><p>Time delay to be applied to the wavelet. The default delay is 1/fc.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r14" rules="none">
+<table class="docutils citation" frame="void" id="r13" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R14]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> N. Ricker, The form and laws of propagation of seismic wavelets,
+<tr><td class="label">[R13]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> N. Ricker, The form and laws of propagation of seismic wavelets,
 Geophysics, vol. 18, pp. 10-40, 1953.</td></tr>
 </tbody>
 </table>
@@ -246,7 +246,7 @@ Geophysics, vol. 18, pp. 10-40, 1953.</td></tr>
 <em class="property">class </em><code class="descclassname">serendipyty.seismic.input.wavelets.</code><code class="descname">RickerIntegratedWavelet</code><span class="sig-paren">(</span><em>t</em>, <em>dt=None</em>, <em>fc=20.0</em>, <em>delay=None</em>, <em>normalized=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/input/wavelets.html#RickerIntegratedWavelet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.input.wavelets.RickerIntegratedWavelet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#serendipyty.seismic.input.wavelets.BaseWavelet" title="serendipyty.seismic.input.wavelets.BaseWavelet"><code class="xref py py-class docutils literal"><span class="pre">serendipyty.seismic.input.wavelets.BaseWavelet</span></code></a></p>
 <p>Integral of the Ricker wavelet.</p>
-<p>The Ricker wavelet is the negative 2nd derivative of a Gaussian <a class="reference internal" href="#r25" id="id3">[R25]</a>.</p>
+<p>This wavelet is the time integral of a Ricker wavelet.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -257,7 +257,7 @@ Geophysics, vol. 18, pp. 10-40, 1953.</td></tr>
 </div></blockquote>
 <p><strong>fc</strong> : float, optional</p>
 <blockquote>
-<div><p>Central (peak) frequency of the wavelet</p>
+<div><p>Central (peak) frequency of the wavelet.</p>
 </div></blockquote>
 <p><strong>normalized</strong> : bool, optional</p>
 <blockquote>
@@ -265,18 +265,10 @@ Geophysics, vol. 18, pp. 10-40, 1953.</td></tr>
 </div></blockquote>
 <p><strong>delay</strong> : float, optional</p>
 <blockquote class="last">
-<div><p>Time delay to be applied to the wavelet. The default delay is 1/<cite>fc</cite>.</p>
+<div><p>Time delay to be applied to the wavelet. The default delay is 1/fc.</p>
 </div></blockquote>
 </td>
 </tr>
-</tbody>
-</table>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r25" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R25]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> N. Ricker, The form and laws of propagation of seismic wavelets,
-Geophysics, vol. 18, pp. 10-40, 1953.</td></tr>
 </tbody>
 </table>
 <p class="rubric">Attributes</p>

@@ -3,13 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>serendipyty.seismic.input.sources &#8212; Serendipyty: A Python toolbox for teaching Geophysics 0.1 documentation</title>
+    <title>serendipyty.seismic.input.sources &#8212; Serendipyty: A Python toolbox for teaching Geophysics 0.0.4 documentation</title>
     <link rel="stylesheet" href="../../../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../../',
-        VERSION:     '0.1',
+        VERSION:     '0.0.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="../../../../index.html">
           Serendipyty</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.4</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -127,16 +127,6 @@
 
 <div class="viewcode-block" id="BaseSource"><a class="viewcode-back" href="../../../../_autosummary/serendipyty.seismic.input.sources.html#serendipyty.seismic.input.sources.BaseSource">[docs]</a><span class="k">class</span> <span class="nc">BaseSource</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Base class for representing a source emitter on a grid.</span>
-
-<span class="sd">    Methods</span>
-<span class="sd">    -------</span>
-<span class="sd">    f(t, **kwargs)</span>
-<span class="sd">        Evaluate w on grid numerically, must be implemented by sub class.</span>
-
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    `intensity` could conceivably become a function of time, in the future.</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="BaseSource.__init__"><a class="viewcode-back" href="../../../../_autosummary/serendipyty.seismic.input.sources.html#serendipyty.seismic.input.sources.BaseSource.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -151,8 +141,16 @@
 
 <div class="viewcode-block" id="BaseSource.plot"><a class="viewcode-back" href="../../../../_autosummary/serendipyty.seismic.input.sources.html#serendipyty.seismic.input.sources.BaseSource.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
              <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;wavelet&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot; Create a plot</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Plot the source wavelet.</span>
 
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        tmax : float</span>
+<span class="sd">            Max time to plot.</span>
+<span class="sd">        aspect: float, &#39;auto&#39;, &#39;equal&#39;</span>
+<span class="sd">            See matplotlib documentation.</span>
+<span class="sd">        style: str</span>
+<span class="sd">            Not used.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1"># Remove the ugly ticks</span>
@@ -172,50 +170,35 @@
         <span class="k">if</span> <span class="n">tmax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmax</span><span class="p">))</span>
 
-        <span class="k">return</span> <span class="n">line</span></div>
-
-    <span class="k">def</span> <span class="nf">reset_time_series</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ts</span><span class="p">):</span>
-        <span class="k">pass</span>
-
-    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Evaluation function </span><span class="se">\&#39;</span><span class="s1">f</span><span class="se">\&#39;</span><span class="s1"> must be implemented by subclass.&#39;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">w</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">argsw</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Wavelet function must be implemented at the subclass level.&#39;</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">line</span></div></div>
 
 
 <div class="viewcode-block" id="PointSource"><a class="viewcode-back" href="../../../../_autosummary/serendipyty.seismic.input.sources.html#serendipyty.seismic.input.sources.PointSource">[docs]</a><span class="k">class</span> <span class="nc">PointSource</span><span class="p">(</span><span class="n">BaseSource</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Subclass of BaseSource for representing a</span>
 <span class="sd">    point source emitter on a grid.</span>
 
-<span class="sd">    Methods</span>
-<span class="sd">    -------</span>
-<span class="sd">    f(t, **kwargs)</span>
-<span class="sd">        Evaluate w(t)*delta(x-x&#39;) numerically.</span>
-
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    loc : float, ndarray</span>
+<span class="sd">        Location of the source in the physical coordinates of the domain.</span>
+<span class="sd">        loc should be a (n x 3) ndarray, where n denotes</span>
+<span class="sd">        the number of sources.</span>
+<span class="sd">    wavelet : BaseWavelet</span>
+<span class="sd">        Function of time that produces the source wavelet.</span>
+<span class="sd">        If only one source location is present, then wavelet should be a (1 x nt) ndarray.</span>
+<span class="sd">        If multiple (n) source locations are present, then wavelet can be a (1 x nt) ndarray</span>
+<span class="sd">        or a (n x nt) ndarray. In the first case, the same wavelet will be used</span>
+<span class="sd">        for all source locations.</span>
+<span class="sd">    mode : string, optional</span>
+<span class="sd">        Mode of the source. Monopole source: &#39;q&#39;, 0.</span>
+<span class="sd">        Dipole sources: &#39;fx&#39;, 1, &#39;fy&#39;, 2, &#39;fz&#39;, 3.</span>
+<span class="sd">    **kwargs : dict, optional</span>
+<span class="sd">        May be used to specify `approximation` and `approximation_width` to</span>
+<span class="sd">        base class.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="PointSource.__init__"><a class="viewcode-back" href="../../../../_autosummary/serendipyty.seismic.input.sources.html#serendipyty.seismic.input.sources.PointSource.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;q&#39;</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Constructor for the PointSource class.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        loc : float, ndarray</span>
-<span class="sd">            Location of the source in the physical coordinates of the domain.</span>
-<span class="sd">            loc should be a (n x 3) ndarray, where n denotes</span>
-<span class="sd">            the number of sources.</span>
-<span class="sd">        wavelet : BaseWavelet</span>
-<span class="sd">            Function of time that produces the source wavelet.</span>
-<span class="sd">            If only one source location is present, then wavelet should be a (1 x nt) ndarray.</span>
-<span class="sd">            If multiple (n) source locations are present, then wavelet can be a (1 x nt) ndarray</span>
-<span class="sd">            or a (n x nt) ndarray. In the first case, the same wavelet will be used</span>
-<span class="sd">            for all source locations.</span>
-<span class="sd">        mode : string, optional</span>
-<span class="sd">            Mode of the source. Monopole source: &#39;q&#39;, 0.</span>
-<span class="sd">            Dipole sources: &#39;fx&#39;, 1, &#39;fy&#39;, 2, &#39;fz&#39;, 3.</span>
-<span class="sd">        **kwargs : dict, optional</span>
-<span class="sd">            May be used to specify `approximation` and `approximation_width` to</span>
-<span class="sd">            base class.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">loc</span> <span class="o">=</span> <span class="n">loc</span>

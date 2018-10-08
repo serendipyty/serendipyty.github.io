@@ -3,13 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>serendipyty.seismic.input.sources &#8212; Serendipyty: A Python toolbox for teaching Geophysics 0.1 documentation</title>
+    <title>serendipyty.seismic.input.sources &#8212; Serendipyty: A Python toolbox for teaching Geophysics 0.0.4 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1',
+        VERSION:     '0.0.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           Serendipyty</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.4</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -75,7 +75,9 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">serendipyty.seismic.input.sources</a></li>
+<li><a class="reference internal" href="#">serendipyty.seismic.input.sources</a><ul>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -139,17 +141,18 @@
 <em class="property">class </em><code class="descclassname">serendipyty.seismic.input.sources.</code><code class="descname">BaseSource</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/input/sources.html#BaseSource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.input.sources.BaseSource" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Base class for representing a source emitter on a grid.</p>
-<p class="rubric">Notes</p>
-<p><cite>intensity</cite> could conceivably become a function of time, in the future.</p>
 <p class="rubric">Methods</p>
-<table border="1" class="docutils">
+<table border="1" class="longtable docutils">
 <colgroup>
-<col width="22%" />
-<col width="78%" />
+<col width="10%" />
+<col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><strong>f(t, **kwargs)</strong></td>
-<td>Evaluate w on grid numerically, must be implemented by sub class.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#serendipyty.seismic.input.sources.BaseSource.plot" title="serendipyty.seismic.input.sources.BaseSource.plot"><code class="xref py py-obj docutils literal"><span class="pre">plot</span></code></a>([tmax,&nbsp;aspect,&nbsp;style,&nbsp;figsize])</td>
+<td>Plot the source wavelet.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_shot</span></code>(shot)</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -162,7 +165,27 @@
 <dl class="method">
 <dt id="serendipyty.seismic.input.sources.BaseSource.plot">
 <code class="descname">plot</code><span class="sig-paren">(</span><em>tmax=None</em>, <em>aspect='auto'</em>, <em>style='wavelet'</em>, <em>figsize=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/input/sources.html#BaseSource.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.input.sources.BaseSource.plot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a plot</p>
+<dd><p>Plot the source wavelet.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tmax</strong> : float</p>
+<blockquote>
+<div><p>Max time to plot.</p>
+</div></blockquote>
+<p><strong>aspect: float, ‘auto’, ‘equal’</strong></p>
+<blockquote>
+<div><p>See matplotlib documentation.</p>
+</div></blockquote>
+<p><strong>style: str</strong></p>
+<blockquote class="last">
+<div><p>Not used.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -179,22 +202,6 @@
 <dd><p>Bases: <a class="reference internal" href="#serendipyty.seismic.input.sources.BaseSource" title="serendipyty.seismic.input.sources.BaseSource"><code class="xref py py-class docutils literal"><span class="pre">serendipyty.seismic.input.sources.BaseSource</span></code></a></p>
 <p>Subclass of BaseSource for representing a
 point source emitter on a grid.</p>
-<p class="rubric">Methods</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="32%" />
-<col width="68%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>f(t, **kwargs)</strong></td>
-<td>Evaluate w(t)*delta(x-x’) numerically.</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="serendipyty.seismic.input.sources.PointSource.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>loc</em>, <em>wavelet</em>, <em>mode='q'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/input/sources.html#PointSource.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.input.sources.PointSource.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructor for the PointSource class.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -227,6 +234,25 @@ base class.</p>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">plot</span></code>([tmax,&nbsp;aspect,&nbsp;style,&nbsp;figsize])</td>
+<td>Plot the source wavelet.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_shot</span></code>(shot)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="serendipyty.seismic.input.sources.PointSource.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>loc</em>, <em>wavelet</em>, <em>mode='q'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/serendipyty/seismic/input/sources.html#PointSource.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#serendipyty.seismic.input.sources.PointSource.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor for the PointSource class.</p>
 </dd></dl>
 
 </dd></dl>

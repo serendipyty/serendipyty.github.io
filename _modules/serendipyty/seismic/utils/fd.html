@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>serendipyty.seismic.utils.fd &#8212; Serendipyty: A Python toolbox for teaching Geophysics 0.0.4 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '0.0.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../../index.html">
+          Serendipyty</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Developer guide</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <h1>Source code for serendipyty.seismic.utils.fd</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Created on Wed Dec 7 11:35:44 2016</span>
+
+<span class="sd">@author: Filippo Broggini (ETH Zürich) - filippo.broggini@erdw.ethz.ch</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">gridspec</span>
+<span class="kn">from</span> <span class="nn">timeit</span> <span class="k">import</span> <span class="n">default_timer</span> <span class="k">as</span> <span class="n">timer</span>
+
+<span class="n">DTYPE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span>
+
+<div class="viewcode-block" id="stability"><a class="viewcode-back" href="../../../../_autosummary/serendipyty.seismic.utils.fd.html#serendipyty.seismic.utils.fd.stability">[docs]</a><span class="k">def</span> <span class="nf">stability</span><span class="p">(</span><span class="n">vmax</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute maximum dt for a stable simulation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    vmax: float</span>
+<span class="sd">        Maximum velocity of the medium</span>
+<span class="sd">    dx: float</span>
+<span class="sd">        Grid discretization.</span>
+<span class="sd">    dt: float</span>
+<span class="sd">        Temporal discretization.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dt_stable: float</span>
+<span class="sd">        Maximum temporal discretization.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">dz</span> <span class="o">=</span> <span class="n">dx</span>
+    <span class="n">operator_order_coeff</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">courant_num_dt</span> <span class="o">=</span> <span class="n">vmax</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">dz</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+    <span class="n">dt_stable</span> <span class="o">=</span> <span class="n">operator_order_coeff</span> <span class="o">/</span> <span class="n">courant_num_dt</span>
+    <span class="k">if</span> <span class="n">dt</span> <span class="o">&gt;</span> <span class="n">dt_stable</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The simulation will get unstable!&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">dt_stable</span></div>
+
+<div class="viewcode-block" id="dispersion"><a class="viewcode-back" href="../../../../_autosummary/serendipyty.seismic.utils.fd.html#serendipyty.seismic.utils.fd.dispersion">[docs]</a><span class="k">def</span> <span class="nf">dispersion</span><span class="p">(</span><span class="n">vmin</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">fc</span><span class="p">,</span> <span class="n">coeff</span><span class="o">=</span><span class="mf">2.0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute maximum dt for a stable simulation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    vmin: float</span>
+<span class="sd">        Minimum velocity of the medium</span>
+<span class="sd">    dx: float</span>
+<span class="sd">        Grid discretization.</span>
+<span class="sd">    fc: float</span>
+<span class="sd">        Central (peak) frequency of the source wavelet.</span>
+<span class="sd">    coeff: float</span>
+<span class="sd">        Coefficient to compute the maximum frequency of the wavelet:</span>
+<span class="sd">        fmax = coeff * fc.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dt_stable: float</span>
+<span class="sd">        Maximum temporal discretization.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">fmax</span> <span class="o">=</span> <span class="n">coeff</span> <span class="o">*</span> <span class="n">fc</span>
+    <span class="n">dx_no_dispersion</span> <span class="o">=</span> <span class="n">vmin</span> <span class="o">/</span> <span class="n">fmax</span> <span class="o">/</span> <span class="mf">6.0</span>
+    <span class="k">if</span> <span class="n">dx</span> <span class="o">&gt;</span> <span class="n">dx_no_dispersion</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The simulation will show dispersion!&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">dx_no_dispersion</span></div>
+
+
+<div class="viewcode-block" id="fdtaylorcoeff"><a class="viewcode-back" href="../../../../_autosummary/serendipyty.seismic.utils.fd.html#serendipyty.seismic.utils.fd.fdtaylorcoeff">[docs]</a><span class="k">def</span> <span class="nf">fdtaylorcoeff</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">xbar</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute coefficients for finite difference approximation.</span>
+
+<span class="sd">    Compute coefficients for finite difference approximation for the</span>
+<span class="sd">    derivative of order k at xbar based on grid values at points in x.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This function returns a row vector c of dimension 1 by n, where n=length(x),</span>
+<span class="sd">    containing coefficients to approximate :math:`u^{(k)}(xbar)`,</span>
+<span class="sd">    the k&#39;th derivative of u evaluated at xbar,  based on n values</span>
+<span class="sd">    of u at x(1), x(2), ... x(n).</span>
+<span class="sd">    If U is a column vector containing u(x) at these n points, then</span>
+<span class="sd">    c*U will give the approximation to :math:`u^{(k)}(xbar)`.</span>
+<span class="sd">    Note for k=0 this can be used to evaluate the interpolating polynomial</span>
+<span class="sd">    itself.</span>
+<span class="sd">    Requires length(x) &gt; k.</span>
+<span class="sd">    Usually the elements x(i) are monotonically increasing</span>
+<span class="sd">    and x(1) &lt;= xbar &lt;= x(n), but neither condition is required.</span>
+<span class="sd">    The x values need not be equally spaced but must be distinct.</span>
+<span class="sd">    This program should give the same results as fdcoeffV.m, but for large</span>
+<span class="sd">    values of n is much more stable numerically.</span>
+<span class="sd">    Based on the program &quot;weights&quot; in [1]_.</span>
+
+<span class="sd">    Note: Forberg&#39;s algorithm can be used to simultaneously compute the</span>
+<span class="sd">    coefficients for derivatives of order 0, 1, ..., m where m &lt;= n-1.</span>
+<span class="sd">    This gives a coefficient matrix C(1:n,1:m) whose k&#39;th column gives</span>
+<span class="sd">    the coefficients for the k&#39;th derivative.</span>
+<span class="sd">    In this version we set m=k and only compute the coefficients for</span>
+<span class="sd">    derivatives of order up to order k, and then return only the k&#39;th column</span>
+<span class="sd">    of the resulting C matrix (converted to a row vector).</span>
+<span class="sd">    This routine is then compatible with fdcoeffV.</span>
+<span class="sd">    It can be easily modified to return the whole array if desired.</span>
+
+<span class="sd">    From  http://www.amath.washington.edu/~rjl/fdmbook/ (2007).</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] B. Fornberg, &quot;Calculation of weights in finite difference formulas&quot;,</span>
+<span class="sd">      SIAM Review 40 (1998), pp. 685-691.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">n</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">n2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">&gt;=</span> <span class="n">n</span><span class="p">:</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;*** length(x) must be larger than k&#39;</span><span class="p">)</span>
+
+    <span class="c1"># change to m=n-1 if you want to compute coefficients for all</span>
+    <span class="c1">#possible derivatives.  Then modify to output all of C.</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">k</span>
+    <span class="n">c1</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">c4</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">xbar</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">mn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span>
+<span class="c1">#        print(mn)</span>
+        <span class="n">c2</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">c5</span> <span class="o">=</span> <span class="n">c4</span>
+        <span class="n">c4</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">xbar</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+            <span class="n">c3</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">c2</span> <span class="o">=</span> <span class="n">c2</span><span class="o">*</span><span class="n">c3</span>
+            <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mn</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                    <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">c1</span><span class="o">*</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">c5</span><span class="o">*</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">])</span><span class="o">/</span><span class="n">c2</span>
+                <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">c1</span><span class="o">*</span><span class="n">c5</span><span class="o">*</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">c2</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mn</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">C</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">c4</span><span class="o">*</span><span class="n">C</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">k</span><span class="o">*</span><span class="n">C</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">c3</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">c4</span><span class="o">*</span><span class="n">C</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">c3</span>
+        <span class="n">c1</span> <span class="o">=</span> <span class="n">c2</span>
+    <span class="c1"># last column of c gives desired row vector</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">))</span>
+    <span class="n">c</span><span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="n">n2</span><span class="p">:]</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span>
+
+    <span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">n2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">c</span><span class="p">,</span> <span class="n">h</span></div>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017-2018, Filippo Broggini.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

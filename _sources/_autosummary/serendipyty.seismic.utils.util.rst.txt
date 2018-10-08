@@ -1,0 +1,23 @@
+serendipyty\.seismic\.utils\.util
+=================================
+
+.. automodule:: serendipyty.seismic.utils.util
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      oneface
+      rectangle
+   
+   
+
+   
+   
+   
+
+   
+   
+   

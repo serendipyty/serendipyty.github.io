@@ -1,0 +1,24 @@
+serendipyty\.seismic\.utils\.fd
+===============================
+
+.. automodule:: serendipyty.seismic.utils.fd
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      dispersion
+      fdtaylorcoeff
+      stability
+   
+   
+
+   
+   
+   
+
+   
+   
+   
