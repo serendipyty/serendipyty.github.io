@@ -3,13 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>serendipyty.seismic.utils.fd &#8212; Serendipyty: A Python toolbox for teaching Geophysics 0.0.4 documentation</title>
+    <title>serendipyty.seismic.utils.fd &#8212; Serendipyty: A Python toolbox for teaching Geophysics 0.0.8 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.0.4',
+        VERSION:     '0.0.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           Serendipyty</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.0.4</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.8</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -61,6 +61,7 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Developer guide</a></li>
 </ul>
 </ul>
@@ -227,7 +228,7 @@ and x(1) &lt;= xbar &lt;= x(n), but neither condition is required.
 The x values need not be equally spaced but must be distinct.
 This program should give the same results as fdcoeffV.m, but for large
 values of n is much more stable numerically.
-Based on the program “weights” in <a class="reference internal" href="#r13" id="id1">[R13]</a>.</p>
+Based on the program “weights” in <a class="reference internal" href="#r911" id="id1">[R911]</a>.</p>
 <p>Note: Forberg’s algorithm can be used to simultaneously compute the
 coefficients for derivatives of order 0, 1, …, m where m &lt;= n-1.
 This gives a coefficient matrix C(1:n,1:m) whose k’th column gives
@@ -239,10 +240,10 @@ This routine is then compatible with fdcoeffV.
 It can be easily modified to return the whole array if desired.</p>
 <p>From  <a class="reference external" href="http://www.amath.washington.edu/~rjl/fdmbook/">http://www.amath.washington.edu/~rjl/fdmbook/</a> (2007).</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r13" rules="none">
+<table class="docutils citation" frame="void" id="r911" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R13]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> B. Fornberg, “Calculation of weights in finite difference formulas”,
+<tr><td class="label">[R911]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> B. Fornberg, “Calculation of weights in finite difference formulas”,
 SIAM Review 40 (1998), pp. 685-691.</td></tr>
 </tbody>
 </table>
