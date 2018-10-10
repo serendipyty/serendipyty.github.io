@@ -8,8 +8,8 @@ Examples
 .. raw:: html   
     <div class="row">
 
-The `examples repository <https://github.com/serendipyty/examples>`_
-of the Serendipyty project contains Jupyter notebooks
+The `notebooks folder <https://github.com/serendipyty/serendipyty/tree/master/notebooks>`_
+of the Serendipyty repository contains Jupyter notebooks
 which you can use to discover the various features of Serendipyty.
 
 .. raw:: html
